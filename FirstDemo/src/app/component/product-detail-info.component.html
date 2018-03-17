@@ -1,0 +1,16 @@
+
+hai
+<div class="panel panel-primary" *ngIf="products">
+  HEHE
+  <div class="panel-heading">
+    {{pageTitle}}
+  </div>
+  <div class="panel-primary">
+{{"Product Code : " + products.productCode}}<br>
+{{"Product Name : " + products.productName}}<br>
+{{"Rate : " + products.rate}}<br>
+  </div>
+<div>
+  <input type="button" value="back" (click) = 'onBack()'>
+</div>
+  </div>

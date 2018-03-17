@@ -1,0 +1,33 @@
+<div class="panel panel-primary">
+    <div>{{panelTitle}}</div>
+    <div>
+        <div>{{filterByLabel}} : 
+            <input type="text" [(ngModel)]='filterText'>
+        </div>
+        <div>{{filteredByLabel}} : {{filterText}}</div>
+        <div>
+            <table *ngIf='products && products.length'>
+                <thead>
+                    <tr>
+                        <th><button (click)='toggle()'>{{eventFlag ? 'Hide' :'Show' | uppercase}}</button> </th>
+                        <th>Product</th>
+                        <th>Code </th>
+                        <th>Rate </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let product of filteredData'>
+<!-- <td><img  *ngIf='eventFlag' [src]='product.imageUrl'  style.width.px={{imageWidth}}></td> -->
+<td><a [routerLink] ="['/product',product.productCode]"><img *ngIf='eventFlag' title={{product.productName}}  src={{product.imageUrl}}  [style.width.px]='imageWidth'></a></td>
+<td>{{product.productName | replaceToSpace :'-'}}</td>
+<td>{{product.productCode | uppercase}}</td>
+<td>
+    <star [rating] = 'product.rate'
+    (userNotify) = 'showClickedRate($event)'></star>
+</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
